@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_bloc/presentation/resources/router_management.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -21,18 +22,26 @@ class _MyDrawerState extends State<MyDrawer> {
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
-        _drawerListTile('My Tasks', '0', Icons.folder_special),
+        _drawerListTile(() {
+          Navigator.of(context).pushReplacementNamed(Routes.task);
+        }, 'My Tasks', '0', Icons.folder_special),
         const Divider(),
-        _drawerListTile('Bin', '0', Icons.delete)
+        _drawerListTile(() {
+          Navigator.of(context).pushReplacementNamed(Routes.recycleBin);
+        }, 'Bin', '0', Icons.delete)
       ]),
     );
   }
 }
 
-Widget _drawerListTile(String title, trailing, IconData icon) {
-  return ListTile(
-    leading: Icon(icon),
-    title: Text(title),
-    trailing: Text(trailing),
+Widget _drawerListTile(
+    VoidCallback onTap, String title, trailing, IconData icon) {
+  return GestureDetector(
+    onTap: onTap,
+    child: ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      trailing: Text(trailing),
+    ),
   );
 }
