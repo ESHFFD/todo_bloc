@@ -2,9 +2,9 @@ import 'package:equatable/equatable.dart';
 
 class Task extends Equatable {
   final String title;
-  bool? isDone;
-  bool? isDeleted;
-  Task({
+  final bool? isDone;
+  final bool? isDeleted;
+  const Task({
     required this.title,
     this.isDone = false,
     this.isDeleted = false,
@@ -39,6 +39,5 @@ class Task extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [title, isDeleted, isDone];
 }
