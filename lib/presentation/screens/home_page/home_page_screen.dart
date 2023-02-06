@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app_bloc/presentation/bloc/bloc/tasks_bloc.dart';
+
+import 'package:todo_app_bloc/presentation/bloc/bloc_exports.dart';
+
 import 'package:todo_app_bloc/presentation/models/task.dart';
 import 'package:todo_app_bloc/presentation/screens/home_page/widgets/add_taks.dart';
 import 'package:todo_app_bloc/presentation/screens/home_page/widgets/drawer.dart';
