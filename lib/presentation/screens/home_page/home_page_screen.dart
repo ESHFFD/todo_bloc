@@ -6,9 +6,14 @@ import 'package:todo_app_bloc/presentation/screens/home_page/widgets/add_taks.da
 
 import 'widgets/tasks_list.dart';
 
-class HomePageScreen extends StatelessWidget {
+class HomePageScreen extends StatefulWidget {
   const HomePageScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomePageScreen> createState() => _HomePageScreenState();
+}
+
+class _HomePageScreenState extends State<HomePageScreen> {
   void _addTask(BuildContext context) {
     showModalBottomSheet(
         // adding is scroll Cotroll

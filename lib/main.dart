@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-
 import 'package:todo_app_bloc/presentation/screens/home_page/home_page_screen.dart';
-
 import 'presentation/bloc/bloc_exports.dart';
 
 void main() async {
@@ -28,7 +25,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomePageScreen(),
+        home: const HomePageScreen(),
       ),
     );
   }
