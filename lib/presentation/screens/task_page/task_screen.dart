@@ -10,7 +10,7 @@ class TaskScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Task Screen'),
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
     );
   }
 }
