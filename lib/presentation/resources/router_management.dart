@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_bloc/presentation/screens/home_page/home_page_screen.dart';
 import 'package:todo_app_bloc/presentation/screens/recylce_page/recycle_screen.dart';
-import 'package:todo_app_bloc/presentation/screens/task_page/task_screen.dart';
 
 class Routes {
   static const String homePage = '/';
   static const String recycleBin = '/recycle-bin';
-  static const String task = '/tasks';
+  static const String task = '/task-homepage';
 }
 
 class RoutManager {
@@ -14,7 +14,7 @@ class RoutManager {
       case (Routes.recycleBin):
         return MaterialPageRoute(builder: (_) => const RecycleScreen());
       case (Routes.task):
-        return MaterialPageRoute(builder: (_) => const TaskScreen());
+        return MaterialPageRoute(builder: (_) => const HomePageScreen());
       default:
         return _unfounded();
     }

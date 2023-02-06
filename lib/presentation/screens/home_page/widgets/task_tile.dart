@@ -27,8 +27,14 @@ class TaskTile extends StatelessWidget {
         value: taskListItems.isDone,
       ),
       onLongPress: () {
-        context.read<TasksBloc>().add(DeleteTask(tasks: taskListItems));
+        _removeOrDeleteTask(context, taskListItems);
       },
     );
   }
+}
+
+void _removeOrDeleteTask(BuildContext ctx, Task task) {
+  task.isDeleted!
+      ? ctx.read<TasksBloc>().add(RemoveTask(tasks: task))
+      : ctx.read<TasksBloc>().add(DeleteTask(tasks: task));
 }
