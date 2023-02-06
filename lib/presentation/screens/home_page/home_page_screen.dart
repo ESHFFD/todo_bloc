@@ -7,8 +7,8 @@ import 'package:todo_app_bloc/presentation/screens/home_page/widgets/add_taks.da
 import 'widgets/tasks_list.dart';
 
 class HomePageScreen extends StatelessWidget {
-  HomePageScreen({Key? key}) : super(key: key);
-  final TextEditingController titleController = TextEditingController();
+  const HomePageScreen({Key? key}) : super(key: key);
+
   void _addTask(BuildContext context) {
     showModalBottomSheet(
         // adding is scroll Cotroll
@@ -20,7 +20,7 @@ class HomePageScreen extends StatelessWidget {
               padding: EdgeInsets.only(
                   //viewInsets is importent to handel keyboard when it popup
                   bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: AddTaskScreen(titleController: titleController),
+              child: const AddTaskScreen(),
             ),
           );
         });

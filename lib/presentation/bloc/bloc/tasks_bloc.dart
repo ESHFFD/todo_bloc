@@ -16,6 +16,20 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     emit(TasksState(allTask: List.from(state.allTask)..add(event.tasks)));
   }
 
-  _onUpdateTask(UpdateTask event, Emitter<TasksState> emitter) {}
-  _onDeleteTask(DeleteTask event, Emitter<TasksState> emitter) {}
+  _onUpdateTask(UpdateTask event, Emitter<TasksState> emit) {
+    final task = event.tasks;
+    final int index = state.allTask.indexOf(task);
+    List<Task> allTask = List.from(state.allTask)..remove(task);
+    task.isDone == false
+        ? allTask.insert(index, task.copyWith(isDone: true))
+        : allTask.insert(
+            index,
+            task.copyWith(isDone: false),
+          );
+    emit(TasksState(allTask: allTask));
+  }
+
+  _onDeleteTask(DeleteTask event, Emitter<TasksState> emit) {
+    emit(TasksState(allTask: List.from(state.allTask)..remove(event.tasks)));
+  }
 }
