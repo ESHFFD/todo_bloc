@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app_bloc/presentation/bloc/bloc/tasks_bloc.dart';
 import 'package:todo_app_bloc/presentation/models/task.dart';
+import 'package:todo_app_bloc/presentation/screens/home_page/widgets/add_taks.dart';
 
 import 'widgets/tasks_list.dart';
 
@@ -10,6 +11,8 @@ class HomePageScreen extends StatelessWidget {
   final TextEditingController titleController = TextEditingController();
   void _addTask(BuildContext context) {
     showModalBottomSheet(
+        // adding is scroll Cotroll
+        isScrollControlled: true,
         context: context,
         builder: (context) {
           return SingleChildScrollView(
@@ -17,25 +20,7 @@ class HomePageScreen extends StatelessWidget {
               padding: EdgeInsets.only(
                   //viewInsets is importent to handel keyboard when it popup
                   bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    const Text('Add Task'),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
-                      controller: titleController,
-                      decoration: const InputDecoration(
-                        label: Text('Tilte'),
-                        border: OutlineInputBorder(),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              child: AddTaskScreen(titleController: titleController),
             ),
           );
         });
