@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app_bloc/presentation/screens/home_page/home_page_screen.dart';
 import 'package:todo_app_bloc/presentation/screens/recylce_page/recycle_screen.dart';
+import 'package:todo_app_bloc/presentation/screens/tab_screen/tab_screen.dart';
 
 class Routes {
   static const String homePage = '/';
@@ -11,6 +12,8 @@ class Routes {
 class RoutManager {
   static Route getRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
+      case (Routes.homePage):
+        return MaterialPageRoute(builder: (_) => const TabScreen());
       case (Routes.recycleBin):
         return MaterialPageRoute(builder: (_) => const RecycleScreen());
       case (Routes.task):

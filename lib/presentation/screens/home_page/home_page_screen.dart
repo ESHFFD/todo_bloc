@@ -3,7 +3,6 @@ import 'package:todo_app_bloc/presentation/bloc/bloc_exports.dart';
 
 import 'package:todo_app_bloc/presentation/models/task.dart';
 import 'package:todo_app_bloc/presentation/screens/home_page/widgets/add_taks.dart';
-import 'package:todo_app_bloc/presentation/screens/home_page/widgets/drawer.dart';
 
 import 'widgets/tasks_list.dart';
 
@@ -15,26 +14,14 @@ class HomePageScreen extends StatelessWidget {
     return BlocBuilder<TasksBloc, TasksState>(
       builder: (context, state) {
         List<Task> taskList = state.allTask;
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text("todo app"),
+        return Column(children: [
+          Center(
+            child: Chip(label: Text('${taskList.length} Tasks')),
           ),
-          drawer: const MyDrawer(),
-          body: Column(children: [
-            Center(
-              child: Chip(label: Text('${taskList.length} Tasks')),
-            ),
-            TaskList(
-              taskList: taskList,
-            )
-          ]),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              _addTask(context);
-            },
-            child: const Icon(Icons.add),
-          ),
-        );
+          TaskList(
+            taskList: taskList,
+          )
+        ]);
       },
     );
   }

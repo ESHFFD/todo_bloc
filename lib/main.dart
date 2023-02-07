@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
                 ? AppThemes.appThemeData[AppTheme.darkTheme]
                 : AppThemes.appThemeData[AppTheme.lightTheme],
             onGenerateRoute: RoutManager.getRoute,
-            home: const HomePageScreen(),
           );
         },
       ),
