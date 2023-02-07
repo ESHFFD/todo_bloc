@@ -13,7 +13,7 @@ class AppThemes {
               foregroundColor: MaterialStateProperty.all(Colors.white)),
         ),
         textTheme:
-            const TextTheme(titleMedium: TextStyle(color: Colors.black))),
+            const TextTheme(titleMedium: TextStyle(color: Colors.white))),
     AppTheme.lightTheme: ThemeData(
         brightness: Brightness.light,
         primaryColor: Colors.white,
@@ -23,6 +23,6 @@ class AppThemes {
               foregroundColor: MaterialStateProperty.all(Colors.black)),
         ),
         textTheme:
-            const TextTheme(titleMedium: TextStyle(color: Colors.white))),
+            const TextTheme(titleMedium: TextStyle(color: Colors.black))),
   };
 }

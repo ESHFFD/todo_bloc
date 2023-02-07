@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:todo_app_bloc/presentation/resources/router_management.dart';
+import 'package:todo_app_bloc/presentation/resources/theme.dart';
 import 'package:todo_app_bloc/presentation/screens/home_page/home_page_screen.dart';
 import 'presentation/bloc/bloc_exports.dart';
 
@@ -23,14 +24,18 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => TasksBloc()),
         BlocProvider(create: (context) => SwitchBloc()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        onGenerateRoute: RoutManager.getRoute,
-        home: const HomePageScreen(),
+      child: BlocBuilder<SwitchBloc, SwitchState>(
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: state.switchValue
+                ? AppThemes.appThemeData[AppTheme.darkTheme]
+                : AppThemes.appThemeData[AppTheme.lightTheme],
+            onGenerateRoute: RoutManager.getRoute,
+            home: const HomePageScreen(),
+          );
+        },
       ),
     );
   }

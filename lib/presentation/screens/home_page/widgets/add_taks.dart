@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app_bloc/presentation/bloc/bloc/tasks_bloc.dart';
+
+import 'package:todo_app_bloc/presentation/bloc/task_bloc/tasks_bloc.dart';
 import 'package:todo_app_bloc/presentation/models/task.dart';
 
 class AddTaskScreen extends StatelessWidget {

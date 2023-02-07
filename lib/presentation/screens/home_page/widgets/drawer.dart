@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:todo_app_bloc/presentation/bloc/bloc_exports.dart';
 import 'package:todo_app_bloc/presentation/resources/router_management.dart';
 
-class MyDrawer extends StatefulWidget {
+class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
 
-  @override
-  State<MyDrawer> createState() => _MyDrawerState();
-}
-
-class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -31,7 +26,18 @@ class _MyDrawerState extends State<MyDrawer> {
             const Divider(),
             _drawerListTile(() {
               Navigator.of(context).pushReplacementNamed(Routes.recycleBin);
-            }, 'Bin', '${state.removeTask.length}', Icons.delete)
+            }, 'Bin', '${state.removeTask.length}', Icons.delete),
+            BlocBuilder<SwitchBloc, SwitchState>(
+              builder: (context, state) {
+                return Switch(
+                    value: state.switchValue,
+                    onChanged: (newVAlue) {
+                      newVAlue
+                          ? context.read<SwitchBloc>().add(SwitchOnEvent())
+                          : context.read<SwitchBloc>().add(SwitchOffEvent());
+                    });
+              },
+            )
           ]);
         },
       ),

@@ -8,4 +8,6 @@ class SwitchState extends Equatable {
   List<Object> get props => [switchValue];
 }
 
-class SwitchInitial extends SwitchState {}
+class SwitchInitial extends SwitchState {
+  const SwitchInitial({required super.switchValue});
+}
