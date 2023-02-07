@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:todo_app_bloc/presentation/screens/home_page/widgets/drawer.dart';
+// import 'package:flutter/material.dart';
+// import 'package:todo_app_bloc/presentation/screens/home_page/widgets/drawer.dart';
 
-class TaskScreen extends StatelessWidget {
-  const TaskScreen({Key? key}) : super(key: key);
+// class TaskScreen extends StatelessWidget {
+//   const TaskScreen({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Task Screen'),
-      ),
-      drawer: const MyDrawer(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Task Screen'),
+//       ),
+//       drawer: const MyDrawer(),
+//     );
+//   }
+// }

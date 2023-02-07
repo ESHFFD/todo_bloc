@@ -21,8 +21,8 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             _drawerListTile(() {
-              Navigator.of(context).pushReplacementNamed(Routes.task);
-            }, 'My Tasks', '${state.allTask.length}', Icons.folder_special),
+              Navigator.of(context).pushReplacementNamed(Routes.homePage);
+            }, 'My Tasks', '${state.pendingTask.length}', Icons.folder_special),
             const Divider(),
             _drawerListTile(() {
               Navigator.of(context).pushReplacementNamed(Routes.recycleBin);

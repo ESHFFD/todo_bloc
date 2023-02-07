@@ -13,7 +13,7 @@ class HomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TasksBloc, TasksState>(
       builder: (context, state) {
-        List<Task> taskList = state.allTask;
+        List<Task> taskList = state.pendingTask;
         return Column(children: [
           Center(
             child: Chip(label: Text('${taskList.length} Tasks')),
