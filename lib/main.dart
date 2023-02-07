@@ -19,7 +19,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => TasksBloc())],
+      providers: [
+        BlocProvider(create: (context) => TasksBloc()),
+        BlocProvider(create: (context) => SwitchBloc()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
