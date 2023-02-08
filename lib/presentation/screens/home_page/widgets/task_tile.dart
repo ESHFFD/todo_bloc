@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_app_bloc/presentation/bloc/bloc_exports.dart';
 import 'package:todo_app_bloc/presentation/models/task.dart';
+import 'package:todo_app_bloc/presentation/screens/home_page/widgets/popup.dart';
 
 class TaskTile extends StatelessWidget {
   const TaskTile({
@@ -62,27 +63,9 @@ class TaskTile extends StatelessWidget {
                 : null,
             value: taskListItems.isDone,
           ),
-          PopupMenuButton(
-              icon: Icon(Icons.more_vert),
-              itemBuilder: (context) {
-                return [
-                  PopupMenuItem(
-                      child: TextButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(Icons.edit),
-                          label: const Text('Edit'))),
-                  PopupMenuItem(
-                      child: TextButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(Icons.bookmark),
-                          label: const Text('Bookmark'))),
-                  PopupMenuItem(
-                      child: TextButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(Icons.delete),
-                          label: const Text('Delete'))),
-                ];
-              })
+          PopUpItem(
+            onTap: () => _removeOrDeleteTask(context, taskListItems),
+          )
         ],
       ),
     );
