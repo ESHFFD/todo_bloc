@@ -19,8 +19,9 @@ class _PendingScreenState extends State<PendingScreen> {
         return Column(children: [
           Center(
             child: Chip(
-                label: Text(
-                    '${taskList.length} Pednding | ${state.compeletedTask} Compeleted')),
+              label: Text(
+                  '${taskList.length} Pending | ${state.compeletedTask.length} Compeleted'),
+            ),
           ),
           TaskList(
             taskList: taskList,
