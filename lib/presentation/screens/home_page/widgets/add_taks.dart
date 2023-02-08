@@ -26,12 +26,15 @@ class AddTaskScreen extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          TextField(
-            autofocus: true,
-            controller: titleController,
-            decoration: const InputDecoration(
-              label: Text('Tilte'),
-              border: OutlineInputBorder(),
+          Padding(
+            padding: const EdgeInsets.only(top: 10.0, bottom: 12),
+            child: TextField(
+              autofocus: true,
+              controller: titleController,
+              decoration: const InputDecoration(
+                label: Text('Tilte'),
+                border: OutlineInputBorder(),
+              ),
             ),
           ),
           TextField(
@@ -39,7 +42,7 @@ class AddTaskScreen extends StatelessWidget {
             maxLines: 5,
             controller: descriptionController,
             decoration: const InputDecoration(
-              label: Text('Tilte'),
+              label: Text('Description'),
               border: OutlineInputBorder(),
             ),
           ),

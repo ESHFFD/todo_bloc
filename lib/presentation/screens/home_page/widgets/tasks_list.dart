@@ -11,7 +11,16 @@ class TaskList extends StatelessWidget {
     return ExpansionPanelList.radio(
       children: taskList
           .map((task) => ExpansionPanelRadio(
-              body: const Text('Description: '),
+              body: ListTile(
+                title: SelectableText.rich(
+                  TextSpan(children: [
+                    const TextSpan(text: 'Text:\n'),
+                    TextSpan(text: task.title),
+                    const TextSpan(text: '\n\nDescription:\n'),
+                    TextSpan(text: task.description),
+                  ]),
+                ),
+              ),
               headerBuilder: (BuildContext context, bool isExpanded) {
                 return TaskTile(taskListItems: task);
               },

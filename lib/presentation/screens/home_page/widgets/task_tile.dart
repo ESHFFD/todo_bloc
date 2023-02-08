@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:todo_app_bloc/presentation/bloc/bloc_exports.dart';
 import 'package:todo_app_bloc/presentation/models/task.dart';
 
@@ -12,25 +13,78 @@ class TaskTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        taskListItems.title,
-        style: TextStyle(
-            decoration: taskListItems.isDone == true
-                ? TextDecoration.lineThrough
-                : null),
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                const Icon(Icons.star_border_outlined),
+                const SizedBox(
+                  width: 8,
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        taskListItems.title,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            decoration: taskListItems.isDone == true
+                                ? TextDecoration.lineThrough
+                                : null,
+                            fontSize: 18),
+                      ),
+                      Text(
+                        DateFormat()
+                            .add_yMMMd()
+                            .add_Hms()
+                            .format(DateTime.now()),
+                        style: TextStyle(fontSize: 11),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Checkbox(
+            onChanged: taskListItems.isDeleted == false
+                ? (value) {
+                    context
+                        .read<TasksBloc>()
+                        .add(UpdateTask(tasks: taskListItems));
+                  }
+                : null,
+            value: taskListItems.isDone,
+          ),
+          PopupMenuButton(
+              icon: Icon(Icons.more_vert),
+              itemBuilder: (context) {
+                return [
+                  PopupMenuItem(
+                      child: TextButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(Icons.edit),
+                          label: const Text('Edit'))),
+                  PopupMenuItem(
+                      child: TextButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(Icons.bookmark),
+                          label: const Text('Bookmark'))),
+                  PopupMenuItem(
+                      child: TextButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(Icons.delete),
+                          label: const Text('Delete'))),
+                ];
+              })
+        ],
       ),
-      trailing: Checkbox(
-        onChanged: taskListItems.isDeleted == false
-            ? (value) {
-                context.read<TasksBloc>().add(UpdateTask(tasks: taskListItems));
-              }
-            : null,
-        value: taskListItems.isDone,
-      ),
-      onLongPress: () {
-        _removeOrDeleteTask(context, taskListItems);
-      },
     );
   }
 }
@@ -40,3 +94,24 @@ void _removeOrDeleteTask(BuildContext ctx, Task task) {
       ? ctx.read<TasksBloc>().add(DeleteTask(tasks: task))
       : ctx.read<TasksBloc>().add(RemoveTask(tasks: task));
 }
+// ListTile(
+//       title: Text(
+//         taskListItems.title,
+//         overflow: TextOverflow.ellipsis,
+//         style: TextStyle(
+//             decoration: taskListItems.isDone == true
+//                 ? TextDecoration.lineThrough
+//                 : null),
+//       ),
+//       trailing: Checkbox(
+//         onChanged: taskListItems.isDeleted == false
+//             ? (value) {
+//                 context.read<TasksBloc>().add(UpdateTask(tasks: taskListItems));
+//               }
+//             : null,
+//         value: taskListItems.isDone,
+//       ),
+//       onLongPress: () {
+//         _removeOrDeleteTask(context, taskListItems);
+//       },
+//     )
