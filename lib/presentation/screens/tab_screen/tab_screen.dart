@@ -55,7 +55,8 @@ class _TabScreenState extends State<TabScreen> {
         currentIndex: selectedIndex,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.list), label: 'Pending Tasks'),
+              icon: Icon(Icons.incomplete_circle_sharp),
+              label: 'Pending Tasks'),
           BottomNavigationBarItem(
               icon: Icon(Icons.done), label: 'Compeleted Tasks'),
           BottomNavigationBarItem(

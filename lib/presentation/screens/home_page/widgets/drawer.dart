@@ -22,11 +22,17 @@ class MyDrawer extends StatelessWidget {
             ),
             _drawerListTile(() {
               Navigator.of(context).pushReplacementNamed(Routes.homePage);
-            }, 'My Tasks', '${state.pendingTask.length}', Icons.folder_special),
+            },
+                'My Tasks',
+                '${state.pendingTask.length} | ${state.compeletedTask.length} ',
+                Icons.folder_special),
             const Divider(),
             _drawerListTile(() {
               Navigator.of(context).pushReplacementNamed(Routes.recycleBin);
-            }, 'Bin', '${state.removeTask.length}', Icons.delete),
+            },
+                'Bin',
+                '${state.removeTask.length} | ${state.pendingTask.length}',
+                Icons.delete),
             BlocBuilder<SwitchBloc, SwitchState>(
               builder: (context, state) {
                 return Switch(

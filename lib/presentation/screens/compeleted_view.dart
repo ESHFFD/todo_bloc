@@ -13,8 +13,7 @@ class CompeletedScreen extends StatelessWidget {
         List<Task> taskList = state.compeletedTask;
         return Column(children: [
           Center(
-            child:
-                Chip(label: Text('${taskList.length} Pending |  Completed ')),
+            child: Chip(label: Text('${taskList.length} Completed ')),
           ),
           TaskList(
             taskList: taskList,
