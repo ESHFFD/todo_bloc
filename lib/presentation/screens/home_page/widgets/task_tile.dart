@@ -45,7 +45,7 @@ class TaskTile extends StatelessWidget {
                             .add_yMMMd()
                             .add_Hms()
                             .format(DateTime.now()),
-                        style: TextStyle(fontSize: 11),
+                        style: const TextStyle(fontSize: 11),
                       )
                     ],
                   ),
@@ -64,7 +64,11 @@ class TaskTile extends StatelessWidget {
             value: taskListItems.isDone,
           ),
           PopUpItem(
-            onTap: () => _removeOrDeleteTask(context, taskListItems),
+            task: taskListItems,
+            cancelOrDeleteItem: () {
+              _removeOrDeleteTask(context, taskListItems);
+              Navigator.pop(context);
+            },
           )
         ],
       ),
